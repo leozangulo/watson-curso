@@ -12,9 +12,16 @@ Temas
 	Conversation
 		https://www.ibm.com/watson/developercloud/conversation/api/v1/
 		https://console.bluemix.net/docs/services/conversation/getting-started.html
+	Personality
+		https://www.ibm.com/watson/services/personality-insights/
+	ToneAnalyzer
+		https://www.ibm.com/watson/services/tone-analyzer/
+	Translator
+		https://www.ibm.com/watson/services/language-translator/
 
 
 Tarea
 	Canversation
-		Hacer un asistente virtual
+		Hacer un asistente virtual que detecte la emocion de la conversacion
+		(usando conversation, toneanalyzer y translator. Tema: Callcenter Banco)
 		https://genteravirtual.mybluemix.net/ (asistente virtual)
