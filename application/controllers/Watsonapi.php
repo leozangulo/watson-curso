@@ -10,7 +10,7 @@ class Watsonapi extends CI_Controller {
 	}
 
 	public function index() {
-		echo "hola";
+		$this->load->view('dialogo');
 	}
 
 	public function conversation() {
