@@ -9,6 +9,7 @@
 			background-color: #000;
 			color: #fff;
 			overflow-y: auto;
+			padding: 20px;
 		}
 	</style>
 </head>
@@ -27,17 +28,26 @@
 
 		$("#envio").click(function() {
 			var query = $("#query").val();
-			console.log(query);
+			envio(query);
+			$("#query").val('');
+			$("#query").focus();
+			var userQuestion = "<b>Usuario</b>: " + query + '<br>';
+			$(".texto").append(userQuestion);
 		});
 
 		function envio(input) {
 			$.ajax({
-				url: 'watsonapi/conversation',
+				url: 'conversation',
 				type: 'POST',
 				data: {query:input}
 			})
-			.done(function() {
-				console.log("success");
+			.done(function(response) {
+				data = JSON.parse(response);
+				var watsonAnswer = '<b>Watson</b>: ';
+				watsonAnswer += data.output.text;
+				watsonAnswer += '<br><hr>';
+
+				$(".texto").append(watsonAnswer);
 			});
 		}
 	});
