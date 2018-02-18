@@ -8,6 +8,7 @@
 			height: 300px;
 			background-color: #000;
 			color: #fff;
+			overflow-y: auto;
 		}
 	</style>
 </head>
@@ -22,15 +23,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	$.ajax({
-		url: '',
-		type: 'POST',
-		data: {query:input},
-	})
-	.done(function() {
-		console.log("success");
+	$(document).ready(function() {
+
+		$("#envio").click(function() {
+			var query = $("#query").val();
+			console.log(query);
+		});
+
+		function envio(input) {
+			$.ajax({
+				url: 'watsonapi/conversation',
+				type: 'POST',
+				data: {query:input}
+			})
+			.done(function() {
+				console.log("success");
+			});
+		}
 	});
-	
 </script>
 
 
