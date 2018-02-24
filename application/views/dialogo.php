@@ -60,10 +60,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
 		$(document.body).on('click','.boton-respuesta', function(){
 			var input_text = $(this).attr('id').replace(/_/g, ' ');
 			envio(input_text);
 		})
+
 		$("#query").focus();
 		envio('Hola');
 		$("#envio").click(function() {
@@ -83,11 +85,21 @@
 			})
 			.done(function(response) {
 				data = JSON.parse(response);
+				console.log(data)
 				var watsonAnswer = '<b>Watson</b>: ';
-				watsonAnswer += data.output.text;
-				watsonAnswer += '<br><hr>';
-
+				if (data.db_response !== undefined) {
+					var curso = JSON.parse(data.db_response);
+					console.log(curso);
+						watsonAnswer += curso.p_planes_nombre + '<br>';
+						watsonAnswer += curso.p_planes_descripcion;
+					watsonAnswer += '<br><hr>';
+				}
+				else {
+					watsonAnswer += data.output.text;
+					watsonAnswer += '<br><hr>';
+				}
 				$(".texto").append(watsonAnswer);
+				$(".respuesta").append(JSON.stringify(data.context)+'<hr>');
 			});
 		}
 	});

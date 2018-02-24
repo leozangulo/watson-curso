@@ -23,7 +23,23 @@ class Watsonapi extends CI_Controller {
 		$data_array = $watson->send_watson_conv_request($query,$wid);
 		$this->session->set_userdata('context', json_encode($data_array['context']));
 		$watson->set_context($this->session->userdata('context'));
-		$this->output->set_output(json_encode($data_array));
+		if (isset($data_array['output']['p_planes_id'])) {
+			//$this->output->set_output(json_encode($data_array));	
+			switch ($data_array['output']['p_planes_id']) {
+				case 1:
+					$db = $this->general_model->respuestaId($data_array['output']['p_planes_id']);
+					$data_array['db_response'] = json_encode($db);
+					$this->output->set_output(json_encode($data_array));
+					break;
+				
+				default:
+					$this->output->set_output(json_encode($data_array));
+					break;
+			}
+		}
+		else {
+			$this->output->set_output(json_encode($data_array));
+		}
 	}
 
 	public function tone() {
