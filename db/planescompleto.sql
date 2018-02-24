@@ -16,6 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `cat_planes`
+--
+
+DROP TABLE IF EXISTS `cat_planes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cat_planes` (
+  `p_planes_id` int(11) NOT NULL AUTO_INCREMENT,
+  `p_planes_nombre` varchar(150) DEFAULT NULL,
+  `p_planes_descripcion` text,
+  PRIMARY KEY (`p_planes_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `cat_planes`
 --
 
@@ -34,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-24 12:33:42
+-- Dump completed on 2018-02-24 12:36:26
