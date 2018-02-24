@@ -18,8 +18,8 @@ class Watsonapi extends CI_Controller {
 	public function conversation() {
 		$query = $this->input->post('query');
 		$watson = new Watson();
-		$watson->set_credentials('fc83b4f1-ba12-484a-8bda-01527a0eebf2','N3ZtcLISvcqJ');
-		$wid = "5b493b32-678b-4fb7-a252-cec9f4bc1d7b";
+		$watson->set_credentials('4fcf6baa-09f8-4088-b195-fa04ed58b1ab','MvBPIBdizPzS');
+		$wid = "65b82fd3-47ea-4391-ad98-3ad5bfd1cf61";
 		$data_array = $watson->send_watson_conv_request($query,$wid);
 		$this->session->set_userdata('context', json_encode($data_array['context']));
 		$watson->set_context($this->session->userdata('context'));
@@ -29,7 +29,7 @@ class Watsonapi extends CI_Controller {
 	public function tone() {
 		$toneAnalyzer = new ToneAnalyzer();
 		$toneAnalyzer->set_credentials('004be85a-8866-41aa-a80d-62e6118a53fb','YufUIKBXWNMa');
-		$tone = $toneAnalyzer->tone('i like artifitial inttelligence');
+		$tone = $toneAnalyzer->tone('i like artifitial intelligence');
 		var_dump($tone);
 	}
 
